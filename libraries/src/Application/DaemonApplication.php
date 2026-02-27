@@ -455,7 +455,7 @@ abstract class DaemonApplication extends CliApplication
 
         // Set the correct home directory for the process.
         if ($uid && ($info = posix_getpwuid($uid)) && is_dir($info['dir'])) {
-            system('export HOME="' . $info['dir'] . '"');
+            putenv('HOME=' . $info['dir']);
         }
 
         // Change the user id for the process necessary.
